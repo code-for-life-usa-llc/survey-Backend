@@ -1,32 +1,20 @@
-// require("dotenv").config();
+require("dotenv").config();
 
-// const express = require("express");
-// const serverless = require("serverless-http");
-// const mongoString = process.env.DATABASE_URL;
+const express = require("express");
+const serverless = require("serverless-http");
+const mongoString = process.env.DATABASE_URL;
 // const mongoose = require("mongoose");
-// const routes = require("../../routes");
+const routes = require("../../routes");
 
 // mongoose.connect(mongoString);
 // const database = mongoose.connection;
-// const app = express();
+const app = express();
 
 // database.on("error", console.log("Connection Error"));
 
-// app.use(express.json());
-// app.use("/api/", routes);
+app.use(express.json());
+app.use("/api/", routes);
 
 // mongoose.connection.close();
 
-// export const handler = serverless(app);
-
-import express, { Router } from 'express';
-import serverless from 'serverless-http';
-
-const api = express();
-
-const router = Router();
-router.get('/hello', (req, res) => res.send('Hello World!'));
-
-api.use('/api/', router);
-
-export const handler = serverless(api);
+export const handler = serverless(app);
