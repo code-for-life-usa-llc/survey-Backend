@@ -33,3 +33,5 @@ const api = express();
 
 const router = Router();
 router.post('/hello', (req, res) => res.send('Hello World!'));
+
+module.exports = router;
