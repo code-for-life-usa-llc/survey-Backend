@@ -16,7 +16,7 @@ router.post("/post", async (req, res) => {
   });
 
   try {
-    // const dataToSave = await data.save();
+    const dataToSave = await data.save();
     res.status(200).json({ message: "SAVED"});
   } catch (error) {
     res.status(400).json({ message: error.message });
