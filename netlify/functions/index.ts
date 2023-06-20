@@ -4,7 +4,7 @@ const express = require("express");
 const serverless = require("serverless-http")
 const mongoString = process.env.DATABASE_URL;
 const mongoose = require("mongoose");
-const routes = require("./routes");
+const routes = require("../../routes");
 
 mongoose.connect(mongoString);
 const database = mongoose.connection;
