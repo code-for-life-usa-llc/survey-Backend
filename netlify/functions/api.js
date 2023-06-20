@@ -3,12 +3,16 @@ require("dotenv").config();
 const express = require("express");
 const serverless = require("serverless-http");
 const mongoString = process.env.DATABASE_URL;
-// const mongoose = require("mongoose");
+const mongoose = require("mongoose");
 const routes = require("../../routes");
 
-// mongoose.connect(mongoString);
-// const database = mongoose.connection;
+console.log("CONNECTION STRING:", mongoString)
+
+mongoose.connect(mongoString);
+const database = mongoose.connection;
 const app = express();
+
+console.log("Database connection", database)
 
 // database.on("error", console.log("Connection Error"));
 
