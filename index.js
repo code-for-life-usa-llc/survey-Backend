@@ -17,6 +17,9 @@ app = express();
 app.use(express.json());
 app.use("/api/", routes);
 
-app.listen(3000, () => {
+const server = app.listen(3000, () => {
   console.log("server started!");
 });
+
+server.keepAliveTimeout = 120 * 1000;
+server.headersTimeout = 120 * 1000;
