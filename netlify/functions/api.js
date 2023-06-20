@@ -5,20 +5,22 @@ const serverless = require("serverless-http");
 const mongoString = process.env.DATABASE_URL;
 const mongoose = require("mongoose");
 const routes = require("../../routes");
-
-console.log("CONNECTION STRING:", mongoString)
-
-mongoose.connect(mongoString);
-const database = mongoose.connection;
 const app = express();
 
-console.log("Database connection", database)
+const connectToDatabase = async () => {
+  try {
+    await mongoose.connect(mongoString);
+    const database = mongoose.connection;
+    database.on("error", console.log("Connection Error"));
+  } catch (error) {
+    console.log("Connection Error");
+  }
+}
 
-// database.on("error", console.log("Connection Error"));
-
-app.use(express.json());
-app.use("/api/", routes);
-
-// mongoose.connection.close();
+connectToDatabase().then(() => {
+  app.use(express.json());
+  app.use("/api/", routes);
+  mongoose.connection.close();
+});
 
 export const handler = serverless(app);
