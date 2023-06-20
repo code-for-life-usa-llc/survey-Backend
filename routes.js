@@ -4,6 +4,7 @@ const Person = require("./schemas/person");
 
 //Post Method
 router.post("/post", async (req, res) => {
+  console.log("POST METHOD")
   const data = new Person({
     dateOfBirth: req.body.dateOfBirth,
     grade: req.body.grade,
