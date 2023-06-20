@@ -3,18 +3,20 @@ const express = require('express');
 const router = express.Router();
 //Post Method
 router.post('/post', async(req, res) => {
+    console.log("endpoint hit!")
     const data = new Person({
-        dateOfBirth: req.dateOfBirth,
-        grade: req.grade,
-        school: req.school,
-        gender: req.gender,
-        zipCode: req.zipCode,
-        borough: req.borough,
-        ethnicity: req.ethnicity,
-        language: req.language,
+        dateOfBirth: req.body.dateOfBirth,
+        grade: req.body.grade,
+        school: req.body.school,
+        gender: req.body.gender,
+        zipCode: req.body.zipCode,
+        borough: req.body.borough,
+        ethnicity: req.body.ethnicity,
+        language: req.body.language,
     })
 
     try {
+        
         const dataToSave = await data.save();
         res.status(200).json(dataToSave)
     }
