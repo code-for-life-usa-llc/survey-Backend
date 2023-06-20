@@ -17,6 +17,7 @@ router.post("/post", async (req, res) => {
 
   try {
     const dataToSave = await data.save();
+    res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate');
     res.status(200).json(dataToSave);
   } catch (error) {
     res.status(400).json({ message: error.message });
