@@ -19,4 +19,6 @@ const app = express();
 app.use(express.json());
 app.use("/api/", routes);
 
+mongoose.connection.close();
+
 export const handler = serverless(app);
