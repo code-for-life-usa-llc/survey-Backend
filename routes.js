@@ -4,7 +4,6 @@ const Person = require("./schemas/person");
 
 //Post Method
 router.post("/post", async (req, res) => {
-  console.log("POST METHOD")
   const data = new Person({
     dateOfBirth: req.body.dateOfBirth,
     grade: req.body.grade,
@@ -16,10 +15,10 @@ router.post("/post", async (req, res) => {
     language: req.body.language,
   });
 
-  console.log("DATA:", data);
-
   try {
     const dataToSave = await data.save();
+
+    console.log("DATA:", dataToSave);
     res.status(200).json(dataToSave);
   } catch (error) {
     res.status(400).json({ message: error.message });

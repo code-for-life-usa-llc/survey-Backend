@@ -10,8 +10,10 @@ mongoose.connect(mongoString);
 const database = mongoose.connection;
 
 database.on("error", () => {
-  console.log("connected");
+  console.log("Connection Error");
 });
+
+console.log("Database connection:", database)
 
 const app = express();
 app.use(express.json());
