@@ -1,21 +1,23 @@
-require("dotenv").config();
+const express = require('express')
+const mongoose = require('mongoose')
+require('dotenv').config();
+const mongoString = process.env.DATABASE_URL
+mongoose.connect(mongoString)
+const database = mongoose.connection
 
-const express = require("express");
-const mongoString = process.env.DATABASE_URL;
-const mongoose = require("mongoose");
-const routes = require("./routes");
+database.on('error', () => {
+    console.log("error 234")
+})
 
-mongoose.connect(mongoString);
-const database = mongoose.connection;
-
-database.on("error", () => {
-  console.log("connected");
-});
-
+database.once('conected', ()=> {
+    console.log("connected 456")
+})
+const routes = require('./routes')
 app = express();
-app.use(express.json());
-app.use("/api", routes);
+app.use(express.json())
+app.use('/api', routes)
 
-app.listen(3000, () => {
-  console.log("server started!");
-});
+
+app.listen(3000, ()=> {
+    console.log('server started 2!')
+})
