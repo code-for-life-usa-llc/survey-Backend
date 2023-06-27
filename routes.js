@@ -1,4 +1,4 @@
-const Person = require("./person")
+const Person = require("./schemas/person")
 const express = require('express');
 const router = express.Router();
 //Post Method
@@ -38,6 +38,9 @@ router.post('/post', async(req, res) => {
         betterOrWorse: req.body.betterOrWorse,
         concernsForFuture: req.body.concernsForFuture,
         positiveDifference: req.body.positiveDifference,
+        //    Social Issues
+        mostImportantIssue: req.body.mostImportantIssue,
+        cityDoingEnough: req.body.cityDoingEnough,
         //      Mental Health
         concernedForMentalHealth: req.body.concernedForMentalHealth,
         engagedHarmfulOrRisky: req.body.engagedHarmfulOrRisky,
