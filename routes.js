@@ -38,6 +38,9 @@ router.post("/post", async (req, res) => {
     betterOrWorse: req.body.betterOrWorse,
     concernsForFuture: req.body.concernsForFuture,
     positiveDifference: req.body.positiveDifference,
+    // Social Issues
+    mostImportantIssue: req.body.mostImportantIssue,
+    cityDoingEnough: req.body.cityDoingEnough,
     //      Mental Health
     concernedForMentalHealth: req.body.concernedForMentalHealth,
     engagedHarmfulOrRisky: req.body.engagedHarmfulOrRisky,
@@ -45,20 +48,6 @@ router.post("/post", async (req, res) => {
     supportive: req.body.supportive,
     mentor: req.body.mentor,
   });
-});
-router.post("/post", async (req, res) => {
-  console.log("[POST] Endpoint hit!");
-  const data = new Person({
-    dateOfBirth: req.body.dateOfBirth,
-    grade: req.body.grade,
-    school: req.body.school,
-    gender: req.body.gender,
-    zipCode: req.body.zipCode,
-    borough: req.body.borough,
-    ethnicity: req.body.ethnicity,
-    languages: req.body.languages,
-  });
-
   try {
     if (data.zipCode.toString().length !== 5) {
       throw new Error("zipCode must be 5 numbers");
