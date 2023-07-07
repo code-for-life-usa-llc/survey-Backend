@@ -80,7 +80,7 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
   },
 
-  goToCollege: {
+  goToCollage: {
     required: true,
     type: Boolean,
   },
