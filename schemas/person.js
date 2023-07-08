@@ -34,7 +34,7 @@ const userSchema = new mongoose.Schema({
   },
   languages: {
     required: true,
-    type: [String],
+    type: String,
   },
 
   /** Opinions made by the person. */
