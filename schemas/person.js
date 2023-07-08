@@ -45,7 +45,7 @@ const userSchema = new mongoose.Schema({
 
   favSocialMedia: {
     required: true,
-    type: String,
+    type: [String],
   },
 
   favFood: {
@@ -82,7 +82,7 @@ const userSchema = new mongoose.Schema({
 
   goToCollage: {
     required: true,
-    type: Boolean,
+    type: String,
   },
 
   repeatGrade: {
@@ -129,7 +129,7 @@ const userSchema = new mongoose.Schema({
   },
   concernsForFuture: {
     required: true,
-    type: Boolean,
+    type: String,
   },
   positiveDifference: {
     required: true,
@@ -141,7 +141,7 @@ const userSchema = new mongoose.Schema({
    */
   mostImportantIssue: {
     required: true,
-    type: String,
+    type: [String],
   },
   cityDoingEnough: {
     required: true,

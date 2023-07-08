@@ -1,5 +1,9 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const routes = require("./routes");
+const app = express();
+const cors = require("cors");
+
 require("dotenv").config();
 
 mongoose.connect(process.env.DATABASE_URL);
@@ -12,11 +16,10 @@ database.once("connected", () => {
 database.on("error", () => {
   console.log("[DATABASE] The database had an error.");
 });
-
-const routes = require("./routes");
-const app = express();
+app.use(cors());
 app.use(express.json());
 app.use("/api", routes);
+
 
 app.listen(3001, () => {
   console.log("[SERVER] The server has started!");
