@@ -58,42 +58,43 @@ router.post('/post', async(req, res) => {
             throw new Error("zipCode must be 5 numbers")
         }
 
-      //favorite Subject verification
-        accpetableSubjects = ['math', 'gym', 'english', 'ela', 'social studies', 'science', 'living environment', 'earth science', 'global', 'health', 'technology']
-        const subject = data.favSubject.toString().toLowerCase()
-        let equalStatus = 0
-        //equalStatus is the status of whether ot not the response is equal to one of the acceptable subjects. If 0, the response is invalid, if 1, the response IS valid
-        for(acceptablesubject of accpetableSubjects){
+      // //favorite Subject verification
+      //   accpetableSubjects = ['math', 'gym', 'english', 'ela', 'social studies', 'science', 'living environment', 'earth science', 'global', 'health', 'technology']
+      //   const subject = data.favSubject.toString()
+      //   let equalStatus = 0
+      //   //equalStatus is the status of whether ot not the response is equal to one of the acceptable subjects. If 0, the response is invalid, if 1, the response IS valid
+      //   for(acceptablesubject of accpetableSubjects){
          
-          if(subject !== acceptablesubject){
-           continue
-          } else {
-           equalStatus + 1
-           return;
-          }
-       }
-       if(equalStatus !== 1) {
-         throw new Error("Selected subject does not exist")
-        }
+      //     if(subject !== acceptablesubject){
+      //      continue
+      //     } else {
+      //      equalStatus + 1
+      //      return;
+      //     }
+      //  }
+      //  if(equalStatus !== 1) {
+      //    throw new Error("Selected subject does not exist")
+      //   }
 
-        //Denomination - Church verification
-        const denom = data.denomination.toString().toLowerCase()
+      //   //Denomination - Church verification
+      //   const denom = data.denomination.toString()
         
-        if(data.churchOrMosque === false && denom.length > 0 ){
-          throw new Error('Cannot be in a denomination if you are not in a church/mosque')
-        }
+      //   if(data.churchOrMosque === false && denom.length > 0 ){
+      //     throw new Error('Cannot be in a denomination if you are not in a church/mosque')
+      //   }
 
-        //Important Issue Verification
+      //   //Important Issue Verification
 
-        const issue = data.mostImportantIssue.toString().toLowerCase()
+      //   const issue = data.mostImportantIssue.toString()
 
-        if(issue.length < 3){
-          throw new Error('Important issue invalid, response too short')
-        }
+      //   if(issue.length < 3){
+      //     throw new Error('Important issue invalid, response too short')
+      //   }
 
-        const dataToSave = await data.save();
-        res.status(200).json(dataToSave)
+      //   const dataToSave = await data.save();
+      //   res.status(200).json(dataToSave)
     }
+  
     catch (error) {
         res.status(400).json({ message: error.message })
     }
