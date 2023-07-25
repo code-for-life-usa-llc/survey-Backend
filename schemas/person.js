@@ -15,7 +15,7 @@ const userSchema = new mongoose.Schema({
     },
     gender:{
         required: false,
-        type: Boolean
+        type: String
     },
     zipCode:{
         required: true,
@@ -33,6 +33,22 @@ const userSchema = new mongoose.Schema({
         required: true,
         type: [String]
     },
+    favSubject: {
+        required: true,
+        type: String
+    },
+    churchOrMosque: {
+        required: true,
+        type: Boolean
+    },
+    denomination: {
+        required: false,
+        type: String
+    },
+    mostImportantIssue: {
+        required: false,
+        type: String
+    }
 })
 
 module.exports = mongoose.model('Data', userSchema)

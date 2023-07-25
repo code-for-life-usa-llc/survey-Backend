@@ -9,7 +9,7 @@ database.on('error', () => {
     console.log("error 234")
 })
 
-database.once('conected', ()=> {
+database.once('connected', ()=> {
     console.log("connected 456")
 })
 const routes = require('./routes')
