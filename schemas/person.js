@@ -113,7 +113,7 @@ const userSchema = new mongoose.Schema({
   },
   community: {
     required: true,
-    type: String,
+    type: [String],
   },
 
   /**
