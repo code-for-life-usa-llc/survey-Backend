@@ -49,19 +49,38 @@ router.post('/post', async(req, res) => {
         mentor: req.body.mentor,
     })
 
-    try {
-        if(data.zipCode.toString().length !== 5){
-            throw new Error("zipCode must be 5 numbers")
-        }
-        const dataToSave = await data.save();
-        res.status(200).json(dataToSave)
+  //zipcode verification
+  try {
+    if (data.zipCode.toString().length !== 5) {
+      throw new Error("zipCode must be 5 numbers");
     }
-    catch (error) {
-        res.status(400).json({ message: error.message })
+
+    //favorite Subject verification
+    const accpetableSubjects = [
+      "math",
+      "gym",
+      "english",
+      "ela",
+      "social studies",
+      "science",
+      "living environment",
+      "earth science",
+      "global",
+      "health",
+      "technology",
+    ];
+    const subject = data.favSubject.toString();
+    if (!accpetableSubjects.includes(subject)) {
+      throw new Error("Selected subject does not exist");
     }
+
+    console.log("VALIDATIONS PASSED");
     const dataToSave = await data.save();
     res.status(200).json(dataToSave);
-  });
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+});
 
 //GET ALL Method
 router.get("/getAll", async (req, res) => {
