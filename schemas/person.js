@@ -133,7 +133,7 @@ const userSchema = new mongoose.Schema({
   },
   positiveDifference: {
     required: true,
-    type: String,
+    type: Boolean,
   },
 
   /**
