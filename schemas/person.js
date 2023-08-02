@@ -75,6 +75,11 @@ const userSchema = new mongoose.Schema({
     type: String,
   },
 
+  schoolMatters: {
+    required: true,
+    type: Boolean,
+  },
+
   graduate: {
     required: true,
     type: Boolean,
