@@ -56,23 +56,29 @@ router.post('/post', async(req, res) => {
     }
 
     //favorite Subject verification
-    const accpetableSubjects = [
-      "math",
-      "gym",
-      "english",
-      "ela",
-      "social studies",
-      "science",
-      "living environment",
-      "earth science",
-      "global",
-      "health",
-      "technology",
-    ];
-    const subject = data.favSubject.toString();
-    if (!accpetableSubjects.includes(subject)) {
-      throw new Error("Selected subject does not exist");
-    }
+    // TO DO:
+    // This needs more thought...for example, what if I type in "Theatre"?
+    // Step 1: ensure that the response is lower cased before tests using #.toLowerCase()
+    // Step 2: either change frontend to be a select using these options, or make a more robust list to compare against
+    //
+    // Commenting this out for now to avoid failure for deployment
+    // const accpetableSubjects = [
+    //   "math",
+    //   "gym",
+    //   "english",
+    //   "ela",
+    //   "social studies",
+    //   "science",
+    //   "living environment",
+    //   "earth science",
+    //   "global",
+    //   "health",
+    //   "technology",
+    // ];
+    // const subject = data.favSubject.toString();
+    // if (!accpetableSubjects.includes(subject)) {
+    //   throw new Error("Selected subject does not exist");
+    // }
 
     console.log("VALIDATIONS PASSED");
     const dataToSave = await data.save();
